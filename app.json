@@ -1,3 +1,9 @@
+/**
+ * Deploy Heroku button
+ * Maesh Express Example. Created by Aditya Gannavarapu (https://github.com/aditya-67)
+ */
+
+
 {
   "name": "Maesh Express Example",
   "description": "Online webstore with Maesh integrated for Express",
@@ -10,7 +16,7 @@
   ],
   "website": "https://maesh.io",
   "repository": "https://github.com/maesh-payment/maesh-express-example",
-  "logo": "",
+  "logo": "https://github.com/maesh-payment/maesh-express-example/blob/main/public/favicon.png",
   "env": {
     "MAESH_TESTING_API_KEY": {
       "description": "Your Maesh Testing API key",
