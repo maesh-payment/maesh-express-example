@@ -4,12 +4,6 @@
   "keywords": ["maesh", "node", "nodejs", "express", "webstore"],
   "website": "https://maesh.io",
   "repository": "https://github.com/maesh-payment/maesh-express-example",
-  "logo": "https://avatars1.githubusercontent.com/u/3453",
-  "success_url": "/",
-  "env": {
-    "MAESH_TESTING_API_KEY": {
-      "description": "Your Maesh Testing API key",
-      "required": true
-    }
+  "logo": "https://avatars1.githubusercontent.com/u/3453"
   }
 }
