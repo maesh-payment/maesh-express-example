@@ -1,13 +1,12 @@
 {
-  "name": "maesh-node-backend",
+  "name": "maesh-express-example",
   "version": "1.0.0",
-  "description": "Maesh integration into HTML+JS, Express web store",
+  "description": "Online webstore with Maesh integrated for Express",
   "scripts": {
-    "start": "node server/app.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node app.js",
   },
   "author": "Aditya",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "body-parser": "^1.19.0",
     "cors": "^2.8.5",
