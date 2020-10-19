@@ -5,7 +5,7 @@ const quantity = urlParams.get('quantity');
 const sku = urlParams.get('sku');
 const xhttp = new XMLHttpRequest();
 
-xhttp.open("GET", 'https://maesh-node-backend.herokuapp.com/products', false);
+xhttp.open("GET", 'https://maesh-express-example.herokuapp.com/products', false);
 xhttp.send();
 
 const products = JSON.parse(xhttp.responseText);

@@ -25,7 +25,7 @@ function createProductFromTemplate(item) {
 }
 
 export async function loadProducts() {
-  const data = await fetch('https://maesh-node-backend.herokuapp.com/products')
+  const data = await fetch('https://maesh-express-example.herokuapp.com/products')
     .then((res) => res.json())
     .catch((err) => console.error(err));
 

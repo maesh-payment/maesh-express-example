@@ -16,7 +16,7 @@ function createOrderFromTemplate(item) {
 }
 
 export async function loadOrders() {
-  const data = await fetch('https://maesh-node-backend.herokuapp.com/orders')
+  const data = await fetch('https://maesh-express-example.herokuapp.com/orders')
     .then((res) => res.json())
     .catch((err) => console.error(err));
 
