@@ -4,6 +4,7 @@
   "description": "Online webstore with Maesh integrated for Express",
   "scripts": {
     "start": "node app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Aditya",
   "license": "MIT",
