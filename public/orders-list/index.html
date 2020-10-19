@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Orders</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.3/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="css/orders-main.css" />
+  </script>
+
+
+</head>
+
+<body>
+
+  <main>
+    <h3 id="title" style="text-align: center;margin-bottom: 30px;">Orders Table</h3>
+    <table class="table table-striped">
+  <thead class="thead-light">
+    <tr>
+      <th scope="col">Reference</th>
+      <th scope="col">Customer</th>
+      <th scope="col">Product</th>
+      <th scope="col">Amount</th>
+      <th scope="col">Payment</th>
+      <th scope="col">Status</th>
+      <th scope="col">Payment Method</th>
+    </tr>
+  </thead>
+  <tbody class="orders">
+  </tbody>
+</table>
+  </main>
+
+  <template id="order">
+    <tr class="order">
+      <td class="reference"></td>
+      <td class="customer"></td>
+      <td class="product"></td>
+      <td class="amount"></td>
+      <td class="payment"></td>
+      <td class="status"></td>
+      <td class="payment-method"></td>
+    </tr>
+  </template>
+
+
+  <script type="module">
+    import { loadOrders } from './js/load-orders.js';
+
+    loadOrders();
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.3/js/bootstrap.min.js"></script>
+</body>
+
+</html>
