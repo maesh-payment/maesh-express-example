@@ -10,7 +10,7 @@
   ],
   "website": "https://maesh.io",
   "repository": "https://github.com/maesh-payment/maesh-express-example",
-  "logo": "https://github.com/maesh-payment/maesh-express-example/blob/main/public/favicon.png",
+  "logo": "https://raw.githubusercontent.com/maesh-payment/maesh-express-example/main/public/favicon.png",
   "env": {
     "MAESH_TESTING_API_KEY": {
       "description": "Your Maesh Testing API key",
