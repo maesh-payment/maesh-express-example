@@ -8,6 +8,10 @@
   <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" />
   <link rel="stylesheet" type="text/css" href="checkout_style.css">
   <link rel="shortcut icon" type="image/png" href="../favicon.png" />
+  <script src="../js/constants.js"></script>
+  <script type="text/javascript">
+    document.getElementById('order-details').action = request_url + '/order-details';
+  </script>
 </head>
 
 <body>
@@ -61,10 +65,7 @@
   <!-- js -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  <script src="../js/constants.js"></script>
-  <script type="text/javascript">
-    $('#order-details').action = request_url + '/order-details';
-  </script>
+  
   <script type="text/javascript" src="checkout_main.js"></script>
 
 </body>
