@@ -10,6 +10,7 @@ const cors = require('cors');
 const app = express();
 const config = require('./config');
 const fs = require('fs');
+const crypto = require('crypto');
 
 // use the express-static middleware
 
@@ -70,22 +71,42 @@ app.post('/order-details', (req, res) => {
     reference_code = Math.random().toString(36).substring(5).toUpperCase();
     let order = req.body;
     order["payment"] = "Unpaid";
-    order["status"] = "temp";
+    order["status"] = "Pending";
     order["reference_code"] = reference_code;
+    order["payment_method"] = '';
     orders.push(order);
     var redirect_url = '/payment?reference='+reference_code
     res.redirect(redirect_url);
 });
 
+app.post('/place-order', (req, res) => {
+    let body = req.body;
+    let order = orders.find(o => o.reference_code === body["reference_code"]);
+    order["payment"] = "Paid";
+    order["status"] = "Success";
+    order["payment_method"] = "Cash on Delivery";
+    var redirect_url = '/redirect?reference='+body["reference_code"];
+    res.redirect(redirect_url);
+});
+
 app.post('/maesh_order_confirmation', function (req, res) {
   const body = req.body;
-  if(key === body['key']){
-    if(body['status'] === 'Succeeded'){
-      let product = products.find(o => o.sku === body['reference_code']);
-      product.quantity--;
-    }
+  const headers = req.headers;
+  var payload_str = body["reference_code"] + '-' + body["transaction_id"] + '-'+ body["timestamp"]
+  console.log(payload_str)
+  var hash = crypto.createHmac('sha256', config.api_key).update(payload_str);
+  if(headers["maesh_signature"] === hash.digest('hex')){
+    let order = orders.find(o => o.reference_code === body["reference_code"]);
+    order["payment"] = "Paid";
+    order["status"] = "Success";
+    order["payment_method"] = "Cash on Delivery";
+    var redirect_url = '/redirect?reference='+body["reference_code"];
+    res.redirect(redirect_url);
+    res.send(req.body);
   }
-  res.send(req.body);
+  else{
+    res.send('Not good');
+  }
 })
 
 // start the server listening for requests

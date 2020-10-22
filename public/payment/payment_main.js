@@ -3,7 +3,7 @@ function getOrderData(){
     const urlParams = new URLSearchParams(queryString);
     const reference = urlParams.get('reference');
     const xhttp = new XMLHttpRequest();
-    const url = 'https://maesh-express-example.herokuapp.com/orders/' + reference;
+    const url = request_url+'/orders/' + reference;
 
     xhttp.open("GET", url, false);
     xhttp.send();
@@ -16,7 +16,7 @@ function getOrderData(){
 
 function apiKey() {
     const xhttp = new XMLHttpRequest();
-    xhttp.open("GET", 'https://maesh-express-example.herokuapp.com/api-key', false);
+    xhttp.open("GET", request_url+'/api-key', false);
     xhttp.send();
 
     const key = JSON.parse(xhttp.responseText);
@@ -26,20 +26,20 @@ function apiKey() {
 
 const order_data = getOrderData();
 
+$('#cod').val(order_data["reference_code"]);
+
 const maeshObj = {
     api_key : apiKey(),
     dom_element_id : 'maesh',
     currency: 'SGD',
     amount: order_data["amount"]*100,
-    gotoUrl: 'https://maesh-express-example.herokuapp.com/redirect',
+    gotoUrl: request_url+'/redirect?reference='+order_data["reference_code"],
     referenceCode: order_data["reference_code"]
 }
 
 
 const maesh = Maesh();
 maesh.create(maeshObj);
-
-
 
 // payment Tabs
 $(".cards .card").click(function () { // Add active class to active link

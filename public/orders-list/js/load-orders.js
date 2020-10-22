@@ -8,7 +8,7 @@ function createOrderFromTemplate(item) {
   order.querySelector('.amount').innerText = item.amount;
   order.querySelector('.payment').innerText = item.payment;
   order.querySelector('.status').innerText = item.status;
-  order.querySelector('.payment-method').innerText = item.payment;
+  order.querySelector('.payment-method').innerText = item.payment_method;
 
 
 
@@ -16,7 +16,7 @@ function createOrderFromTemplate(item) {
 }
 
 export async function loadOrders() {
-  const data = await fetch('https://maesh-express-example.herokuapp.com/orders')
+  const data = await fetch(request_url+'/orders')
     .then((res) => res.json())
     .catch((err) => console.error(err));
 

@@ -8,8 +8,7 @@
   <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" />
   <link href="payment_style.css" rel="stylesheet" />
   <link rel="shortcut icon" type="image/png" href="../favicon.png" />
-  <script src="https://js.maesh.io/v1.js">
-  </script>
+  <script src="https://js.maesh.io/v1.js"></script>
 </head>
 
 <body>
@@ -93,20 +92,18 @@
               </div>
               <img src="images/authorize-.png" style="width: 17%;float: right;" />
             </div>
-
-            <div class="card" data-class="payoneer">
-              <div class="radio">
-                <input id="radio-4" name="radio" type="radio">
-                <label for="radio-4" class="radio-label">Payoneer</label>
-              </div>
-              <img src="images/payoneer.png" style="width: 17%;float: right;" />
-            </div>
             <div class="card" data-class="paypall">
               <div class="radio">
                 <input id="radio-2" name="radio" type="radio">
                 <label for="radio-2" class="radio-label">Paypal</label>
               </div>
               <img src="images/paypal.png" style="width: 17%;float: right;" />
+            </div>
+            <div class="card" data-class="cashondelivery">
+              <div class="radio">
+                <input id="radio-4" name="radio" type="radio">
+                <label for="radio-4" class="radio-label">Cash On Delivery</label>
+              </div>
             </div>
             <div class="card" data-class="maesh">
               <div class="radio">
@@ -218,12 +215,15 @@
                 </div>
               </div>
             </div>
-            <div class="payoneer">
+            <div class="cashondelivery">
               <div class="form">
                 <div class="form-header">
-                  <h1>Checkout with Payoneer</h1>
+                  <h1>Pay with Cash on Delivery</h1>
                 </div>
-                <a class="btn btn-green btn-lg">Checkout</a>
+                <form action="http://localhost:5000/place-order" method="POST">
+                  <input type="hidden" name="reference_code" value="" id="cod" />
+                <button class="btn btn-green btn-lg">Place Order</button>
+              </form>
               </div>
             </div>
             <div class="paypall">
@@ -245,6 +245,7 @@
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="../js/constants.js"></script>
   <script src="payment_main.js"></script>
 </body>
 

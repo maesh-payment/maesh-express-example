@@ -1,11 +1,11 @@
-
 const queryString = window.location.search;
 const urlParams = new URLSearchParams(queryString);
 const quantity = urlParams.get('quantity');
 const sku = urlParams.get('sku');
 const xhttp = new XMLHttpRequest();
 
-xhttp.open("GET", 'https://maesh-express-example.herokuapp.com/products', false);
+console.log(request_url);
+xhttp.open("GET", request_url+'/products', false);
 xhttp.send();
 
 const products = JSON.parse(xhttp.responseText);
@@ -18,8 +18,6 @@ $('#display_amount').text(amount);
 $('#sku').val(sku);
 $('#quantity').val(quantity);
 $('#amount').val(parseInt(amount));
-
-$('')
 
 var PrefillMachine = {
   
