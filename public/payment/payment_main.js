@@ -31,7 +31,7 @@ $('#cod').val(order_data["reference_code"]);
 // Include below code in a script tag
 const maesh = Maesh();
 maesh.create({
-  api_key: api_key(),
+  api_key: apiKey(),
   dom_element_id: "maesh-component",
   currency: "SGD",
   amount: order_data["amount"],
