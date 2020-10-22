@@ -18,7 +18,7 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded());
 
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static("public"));
 
 let products = [
     {
@@ -102,7 +102,7 @@ app.post('/maesh_order_confirmation', function (req, res) {
     order["payment_method"] = "Cash on Delivery";
     var redirect_url = '/redirect?reference='+body["reference_code"];
     res.redirect(redirect_url);
-    res.send(req.body);
+    res.send(req.body)
   }
   else{
     res.send('Not good');
