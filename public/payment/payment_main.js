@@ -28,19 +28,6 @@ const order_data = getOrderData();
 
 $('#cod').val(order_data["reference_code"]);
 
-const maeshObj = {
-    api_key : apiKey(),
-    dom_element_id : 'maesh',
-    currency: 'SGD',
-    amount: order_data["amount"]*100,
-    gotoUrl: request_url+'/redirect?reference='+order_data["reference_code"],
-    referenceCode: order_data["reference_code"]
-}
-
-
-const maesh = Maesh();
-maesh.create(maeshObj);
-
 // payment Tabs
 $(".cards .card").click(function () { // Add active class to active link
     $(this).addClass("active").siblings().removeClass("active"); // Hide all divs on click

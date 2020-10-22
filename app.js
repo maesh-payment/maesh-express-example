@@ -85,29 +85,11 @@ app.post('/place-order', (req, res) => {
     order["payment"] = "Paid";
     order["status"] = "Success";
     order["payment_method"] = "Cash on Delivery";
+    let product = products.find(p => p.sku === order.sku);
+    product["quantity"] -= order["quantity"];
     var redirect_url = '/redirect?reference='+body["reference_code"];
     res.redirect(redirect_url);
 });
-
-app.post('/maesh_order_confirmation', function (req, res) {
-  const body = req.body;
-  const headers = req.headers;
-  var payload_str = body["reference_code"] + '-' + body["transaction_id"] + '-'+ body["timestamp"]
-  console.log(payload_str)
-  var hash = crypto.createHmac('sha256', config.api_key).update(payload_str);
-  if(headers["maesh_signature"] === hash.digest('hex')){
-    let order = orders.find(o => o.reference_code === body["reference_code"]);
-    order["payment"] = "Paid";
-    order["status"] = "Success";
-    order["payment_method"] = "Cash on Delivery";
-    var redirect_url = '/redirect?reference='+body["reference_code"];
-    res.redirect(redirect_url);
-    res.send(req.body)
-  }
-  else{
-    res.send('Not good');
-  }
-})
 
 // start the server listening for requests
 app.listen(config.port || 3000, 
