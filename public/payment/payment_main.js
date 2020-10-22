@@ -32,7 +32,7 @@ $('#cod').val(order_data["reference_code"]);
 const maesh = Maesh();
 maesh.create({
   api_key: apiKey(),
-  dom_element_id: "maesh-component",
+  dom_element_id: "maesh",
   currency: "SGD",
   amount: parseInt(order_data["amount"]),
   gotoUrl: request_url+'/redirect',
