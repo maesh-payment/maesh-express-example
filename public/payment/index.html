@@ -8,6 +8,8 @@
   <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" />
   <link href="payment_style.css" rel="stylesheet" />
   <link rel="shortcut icon" type="image/png" href="../favicon.png" />
+  <!-- Include the script tag in the head​ tag of your HTML file. -->
+<script src="https://js.maesh.io/v1.js"></script>
 </head>
 
 <body>
@@ -233,8 +235,9 @@
                 <a class="btn btn-green btn-lg">Checkout</a>
               </div>
             </div>
-            <div class="maesh" id="maesh">
-            </div>
+            <!-- Prepare an empty div to load the Maesh Component-->
+            <div id="maesh-component"></div>
+        <!-- Place this div where you want the component to load on your page -->
           </div>
 
         </div>

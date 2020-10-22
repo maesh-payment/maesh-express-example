@@ -28,6 +28,17 @@ const order_data = getOrderData();
 
 $('#cod').val(order_data["reference_code"]);
 
+// Include below code in a script tag
+const maesh = Maesh();
+maesh.create({
+  api_key: config.api_key,
+  dom_element_id: "maesh-component",
+  currency: "SGD",
+  amount: order_data["amount"],
+  gotoUrl: request_url+'/redirect',
+  referenceCode: order_data["reference_code"],
+});
+
 // payment Tabs
 $(".cards .card").click(function () { // Add active class to active link
     $(this).addClass("active").siblings().removeClass("active"); // Hide all divs on click
