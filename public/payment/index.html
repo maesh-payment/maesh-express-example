@@ -220,7 +220,7 @@
                 <div class="form-header">
                   <h1>Pay with Cash on Delivery</h1>
                 </div>
-                <form action="http://localhost:5000/place-order" method="POST">
+                <form method="POST" id="place-order-form">
                   <input type="hidden" name="reference_code" value="" id="cod" />
                 <button class="btn btn-green btn-lg">Place Order</button>
               </form>
@@ -246,6 +246,9 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <script src="../js/constants.js"></script>
+  <script type="text/javascript">
+    $('#place-order-form').action = request_url + '/place-order';
+  </script>
   <script src="payment_main.js"></script>
 </body>
 
