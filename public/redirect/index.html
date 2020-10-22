@@ -6,6 +6,8 @@
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<link rel="shortcut icon" type="image/png" href="../favicon.png" />
 	<title>Order Confirmation | Maesh Express Example</title>
+	<!-- Include the script tag in the head​ tag of your HTML file. -->
+<script src="https://js.maesh.io/v1.js"></script>
 	<style>
 		.bg {
 			background-color: #6c7bee;
@@ -193,6 +195,7 @@
 
 <body>
 	<div class="bg">
+		Your payment status is <h3 id="status_maesh"></h3>
 
 		<div class="card" id="success">
 
@@ -258,6 +261,16 @@
 
 getOrderData();
 
+
+// Include below code in a script tag
+const maesh = Maesh();
+const maeshStatus = maesh.callback();
+// Resolve promise to get status of payment.
+maeshStatus.then(
+    status => {
+    	document.getElementById("status_maesh").innerHTML = status;
+    }
+    )
 	</script>
 </body>
 
