@@ -8,10 +8,6 @@
   <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" />
   <link href="payment_style.css" rel="stylesheet" />
   <link rel="shortcut icon" type="image/png" href="../favicon.png" />
-  <script src="../js/constants.js"></script>
-  <script type="text/javascript">
-    document.getElementById('place-order-form').action = request_url + '/place-order';
-  </script>
   <script src="https://js.maesh.io/v1.js"></script>
 </head>
 
@@ -249,7 +245,10 @@
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  
+  <script src="../js/constants.js"></script>
+  <script type="text/javascript">
+    document.getElementById('place-order-form').action = request_url + '/place-order';
+  </script>
   <script src="payment_main.js"></script>
 </body>
 
