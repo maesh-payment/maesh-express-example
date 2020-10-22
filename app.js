@@ -91,6 +91,24 @@ app.post('/place-order', (req, res) => {
     res.redirect(redirect_url);
 });
 
+
+app.post('/maesh_order_confirmation', (req,res) => {
+  const body = req.body;
+  const headers = req.headers;
+  const test_api_key = config.api_key;
+  var payload_str = body["reference_code"] + '-' + body["transaction_id"] + '-'+ body["timestamp"]
+  var hash = crypto.createHmac('sha256', test_api_key).update(payload_str);
+  if(headers["maesh_signature"] === hash.digest('hex')){
+    let order = orders.find(o => o.reference_code === body["reference_code"]);
+    order["payment"] = "Paid";
+    order["status"] = body["status"];
+    order["payment_method"] = "Paid via Maesh";
+    let product = products.find(p => p.sku === order.sku);
+    product["quantity"] -= order["quantity"];
+  }
+
+}
+
 // start the server listening for requests
 app.listen(config.port || 3000, 
   () => console.log("Server is running..."));
