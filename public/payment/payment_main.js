@@ -34,7 +34,7 @@ maesh.create({
   api_key: apiKey(),
   dom_element_id: "maesh-component",
   currency: "SGD",
-  amount: order_data["amount"],
+  amount: parseInt(order_data["amount"]),
   gotoUrl: request_url+'/redirect',
   referenceCode: order_data["reference_code"],
 });
