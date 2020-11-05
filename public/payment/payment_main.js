@@ -33,7 +33,7 @@ const maesh = Maesh();
 maesh.create({
   api_key: apiKey(),
   dom_element_id: "maesh",
-  currency: "USD",
+  currency: "SGD",
   amount: parseInt(order_data["amount"]),
   gotoUrl: request_url+'/redirect',
   referenceCode: order_data["reference_code"],
