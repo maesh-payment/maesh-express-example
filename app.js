@@ -98,7 +98,7 @@ app.post('/maesh_order_confirmation', (req,res) => {
   const test_api_key = config.api_key;
   var payload_str = body["reference_code"] + '-' + body["transaction_id"] + '-'+ body["timestamp"]
   var hash = crypto.createHmac('sha256', test_api_key).update(payload_str);
-  if(headers["maesh_signature"] === hash.digest('hex')){
+  if(headers["maesh-signature"] === hash.digest('hex')){
     let order = orders.find(o => o.reference_code === body["reference_code"]);
     order["payment"] = "Paid";
     order["status"] = body["status"];
