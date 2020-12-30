@@ -105,7 +105,6 @@ app.post('/maesh_order_confirmation', (req,res) => {
     order["payment_method"] = "Paid via Maesh";
     let product = products.find(p => p.sku === order.sku);
     product["quantity"] -= order["quantity"];
-    res.send(req.body);
   }
 
 });
