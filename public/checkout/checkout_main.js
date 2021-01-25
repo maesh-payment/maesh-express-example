@@ -4,7 +4,6 @@ const quantity = urlParams.get('quantity');
 const sku = urlParams.get('sku');
 const xhttp = new XMLHttpRequest();
 
-console.log(request_url);
 xhttp.open("GET", request_url+'/products', false);
 xhttp.send();
 

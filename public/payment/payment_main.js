@@ -24,20 +24,20 @@ function apiKey() {
     return key;
 }
 
-const order_data = getOrderData();
+// const order_data = getOrderData();
 
-$('#cod').val(order_data["reference_code"]);
+// $('#cod').val(order_data["reference_code"]);
 
-// Include below code in a script tag
-const maesh = Maesh();
-maesh.create({
-  api_key: apiKey(),
-  dom_element_id: "maesh",
-  currency: "SGD",
-  amount: parseInt(order_data["amount"]),
-  gotoUrl: request_url+'/redirect',
-  referenceCode: order_data["reference_code"],
-});
+// // Include below code in a script tag
+// const maesh = Maesh();
+// maesh.create({
+//   api_key: apiKey(),
+//   dom_element_id: "maesh",
+//   currency: "SGD",
+//   amount: parseInt(order_data["amount"]),
+//   gotoUrl: request_url+'/redirect',
+//   referenceCode: order_data["reference_code"],
+// });
 
 // payment Tabs
 $(".cards .card").click(function () { // Add active class to active link

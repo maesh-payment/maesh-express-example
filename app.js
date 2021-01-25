@@ -11,6 +11,7 @@ const app = express();
 const config = require('./config');
 const fs = require('fs');
 const crypto = require('crypto');
+const makeRequest = require('./rapyd_utils').makeRequest;
 
 // use the express-static middleware
 
@@ -91,23 +92,41 @@ app.post('/place-order', (req, res) => {
     res.redirect(redirect_url);
 });
 
-
-app.post('/maesh_order_confirmation', (req,res) => {
-  const body = req.body;
-  const headers = req.headers;
-  const test_api_key = config.api_key;
-  var payload_str = body["reference_code"] + '-' + body["transaction_id"] + '-'+ body["timestamp"]
-  var hash = crypto.createHmac('sha256', test_api_key).update(payload_str);
-  if(headers["maesh-signature"] === hash.digest('hex')){
-    let order = orders.find(o => o.reference_code === body["reference_code"]);
-    order["payment"] = "Paid";
-    order["status"] = body["status"];
-    order["payment_method"] = "Paid via Maesh";
-    let product = products.find(p => p.sku === order.sku);
-    product["quantity"] -= order["quantity"];
+app.post('/rapyd-pay', async (req, res) => {
+    let body = req.body;
+    try {
+    const body = {
+      amount: 821,
+      complete_checkout_url: 'http://example.com/redirect',
+      country: 'SG',
+      currency: 'SGD',
+      merchant_reference_id: '950ae8c6-79',
+    };
+    const result = await makeRequest('POST', '/v1/checkout', body);
+    console.log(result);
+    res.redirect(result['body']['data']['redirect_url']);
+  } catch (error) {
+    console.error('Error completing request', error);
   }
-
 });
+
+
+// app.post('/maesh_order_confirmation', (req,res) => {
+//   const body = req.body;
+//   const headers = req.headers;
+//   const test_api_key = config.api_key;
+//   var payload_str = body["reference_code"] + '-' + body["transaction_id"] + '-'+ body["timestamp"]
+//   var hash = crypto.createHmac('sha256', test_api_key).update(payload_str);
+//   if(headers["maesh-signature"] === hash.digest('hex')){
+//     let order = orders.find(o => o.reference_code === body["reference_code"]);
+//     order["payment"] = "Paid";
+//     order["status"] = body["status"];
+//     order["payment_method"] = "Paid via Maesh";
+//     let product = products.find(p => p.sku === order.sku);
+//     product["quantity"] -= order["quantity"];
+//   }
+
+// });
 
 // start the server listening for requests
 app.listen(config.port || 3000, 

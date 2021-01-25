@@ -1,5 +1,12 @@
-# Maesh Express Example
-Online webstore with Maesh integrated for Express
+# Rapyd Express Example
+Online webstore with Rapyd integrated for Express
 
+Replace your Rapyd Keys in rapyd_utils.js file
 
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/maesh-payment/maesh-express-example/tree/main)
+Clone the repository
+
+Install dependencies
+```npm install```
+
+Start app
+```npm run start```
