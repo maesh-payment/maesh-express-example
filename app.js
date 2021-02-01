@@ -110,23 +110,37 @@ app.post('/rapyd-pay', async (req, res) => {
   }
 });
 
+app.post('/fetch-qr', async (req, res) => {
+    let request_body = req.body;
+    try {
+    const body = {
+      amount: parseInt(request_body['amount']),
+      currency: 'SGD',
+      payment_method: {
+        type: 'sg_paynow_bank'
+      }
+    };
+    const result = await makeRequest('POST', '/v1/payments', body);
+    var data = {'qr' : result['body']['data']['visual_codes']['PayNow QR'], 'payment_id' : result['body']['data']['id'], 'param_two': result['body']['data']['original_amount']}
+    res.send(data);
+  } catch (error) {
+    console.error('Error completing request', error);
+  }
+});
 
-// app.post('/maesh_order_confirmation', (req,res) => {
-//   const body = req.body;
-//   const headers = req.headers;
-//   const test_api_key = config.api_key;
-//   var payload_str = body["reference_code"] + '-' + body["transaction_id"] + '-'+ body["timestamp"]
-//   var hash = crypto.createHmac('sha256', test_api_key).update(payload_str);
-//   if(headers["maesh-signature"] === hash.digest('hex')){
-//     let order = orders.find(o => o.reference_code === body["reference_code"]);
-//     order["payment"] = "Paid";
-//     order["status"] = body["status"];
-//     order["payment_method"] = "Paid via Maesh";
-//     let product = products.find(p => p.sku === order.sku);
-//     product["quantity"] -= order["quantity"];
-//   }
-
-// });
+app.post('/complete-payment', async (req, res) => {
+    let request_body = req.body;
+    try {
+    const body = {
+      token: request_body['payment_id'],
+      param2: request_body['param_two']
+    };
+    const result = await makeRequest('POST', '/v1/payments/completePayment', body);
+    res.send(result['body']['status']['status']);
+  } catch (error) {
+    console.error('Error completing request', error);
+  }
+});
 
 // start the server listening for requests
 app.listen(config.port || 3000, 

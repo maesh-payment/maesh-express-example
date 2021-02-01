@@ -1,0 +1,27 @@
+<html>
+<head>
+<title>PayNow QR</title>
+<link href="style.css" type="text/css" rel="stylesheet" />
+</head>
+<body>
+<div class="product-item">
+	<div class="product-tile-footer">
+	<div class="product-title">Enter amount to generate PayNow QR</div>
+	<div class="cart-action" style="float: none;"><input type="number" class="amount" name="amount" value="1" size="8" /><button class="btnAddAction" id="generate-qr">Generate QR</button></div>
+	</div>
+<div id="show-qr" style="display: none;text-align: center;">
+<img id="qr-code" src="" />
+<input type="hidden" value="" id="payment_id"/>
+<input type="hidden" value="" id="amount"/>
+<div class="product-tile-footer">
+	<button class="btnAddAction" id="complete-payment">Complete Payment</button>
+</div>
+</div>
+<div id="status" class="product-tile-footer"></div>
+</div>
+
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="../js/constants.js"></script>
+<script src="main.js"></script>
+</html>
